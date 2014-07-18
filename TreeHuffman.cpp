@@ -38,12 +38,34 @@ void TreeHuffman::bubbleHuffman()
 {
     for(int i = 1;i<=size;i++)
     {
-        for(int j = 1; j<size;j++)
+        for(int j = i+1; j<=size;j++)
         {
-            if(treeHuffman[j+1].isMore(treeHuffman[j]))
+            if(treeHuffman[i].getSize()<treeHuffman[j].getSize())
             {
-                swap(treeHuffman[j],treeHuffman[j+1]);
+                swap(treeHuffman[i],treeHuffman[j]);
             }
+            else
+            {
+                if(treeHuffman[i].getSize()==treeHuffman[j].getSize())
+                {
+                    if(!treeHuffman[i].leaf && treeHuffman[j].leaf)
+                    {
+                        swap(treeHuffman[i],treeHuffman[j]);
+                    }
+                    else
+                    {
+                        if(treeHuffman[i].leaf && treeHuffman[j].leaf)
+                        {
+                            if(treeHuffman[i].getElement()<treeHuffman[j].getElement())
+                            {
+                                swap(treeHuffman[i],treeHuffman[j]);
+                            }
+                        }
+                    }
+
+                }
+            }
+
         }
     }
     cell* left =new cell();
@@ -60,7 +82,6 @@ void TreeHuffman::buildHuffman()
     {
         this->bubbleHuffman();
     }
-
 }
 
 QString TreeHuffman::treeRepresetation(cell* node,QString R , bool left)
@@ -102,7 +123,7 @@ void TreeHuffman::printTree(cell* node , int level )
     }
     if(node->leaf)
     {
-        cout << qPrintable(QString("\t").repeated(level)) <<"element="<< node->getElement()<<"e="<<(int) node->getElement()<<endl;
+        cout << qPrintable(QString("\t").repeated(level)) <<"element="<< node->getElement()<<"e="<<(int) node->getElement() + 128 <<endl;
     }
 
 }

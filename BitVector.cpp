@@ -133,3 +133,8 @@ void BitVector::resize()
     this->biTvector=buffer;
     this->size=position;
 }
+
+void BitVector::setSize(int size)
+{
+    this->size=size;
+}

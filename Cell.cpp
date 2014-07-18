@@ -21,7 +21,7 @@ cell::cell(char element, int size)
 }
 bool cell::isMore(cell cell)
 {
-    if(this->size>=cell.size)
+    if(this->size>cell.size)
     {
         return true;
     }

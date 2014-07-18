@@ -56,6 +56,9 @@ public:
     //Retorna o tamanho do BitVector
     int getSize();
 
+    //Modifica o tamanho do bit vector
+    void setSize(int size);
+
     //Retimenciona o BitVector, ou seja, apaga os valores em grupos de 8 em 8.
     void resize();
 
